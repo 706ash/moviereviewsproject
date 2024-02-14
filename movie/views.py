@@ -1,11 +1,16 @@
+# Import necessary modules
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
 
+# Define the home view function
 def home(request):
+    # Get the search term from the query parameters
     searchTerm = request.GET.get('searchMovie')
+    
+    # Render the home.html template with the search term as a context variable
     return render(request, 'home.html', {'searchTerm' : searchTerm})
 
+# Define the about view function
 def about(request):
+    # Return a simple HTTP response with a welcome message
     return HttpResponse('<h1>Welcome to about page')
-

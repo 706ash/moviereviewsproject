@@ -13,12 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# Import necessary modules
 from django.contrib import admin
 from django.urls import path
 from movie import views as movieViews
 
+# Define the URL patterns for the application
 urlpatterns = [
+    # Map the URL '/admin/' to the Django admin interface
     path('admin/', admin.site.urls),
+    
+    # Map the URL '' (home page) to the home view function in the movieViews module
     path('', movieViews.home),
+    
+    # Map the URL 'about/' to the about view function in the movieViews module
     path('about/', movieViews.about),
 ]
