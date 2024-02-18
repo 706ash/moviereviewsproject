@@ -18,6 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from movie import views as movieViews
+from django.conf.urls.static import static
+from django.conf import settings
 
 # Define the URL patterns for the application
 urlpatterns = [
@@ -25,8 +27,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     # Map the URL '' (home page) to the home view function in the movieViews module
-    path('', movieViews.home),
+    path('', movieViews.home, name = 'home'),
     
     # Map the URL 'about/' to the about view function in the movieViews module
     path('about/', movieViews.about),
+
+    path('signup/', movieViews.signup, name='signup'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

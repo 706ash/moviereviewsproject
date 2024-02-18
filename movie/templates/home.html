@@ -7,7 +7,6 @@
         <div class ="container">
             <form action ="">
                 <div class="mb-3">
-               
                     <label class="form-label">Search for movie:</label>
                   <input type="text" name = "searchMovie" class = "form-control">
                 </div>
@@ -16,6 +15,20 @@
                 </button>
             </form>
             Searching for {{searchTerm}}
+            <br />
+            <br />
+            <h2>Join our mailing list:</h2>
+            <form action="{% url 'signup' %}">
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        Enter your email:
+                    </label>
+                    <input type="email" class="form-control" name="email" />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                Sign Up
+                </button>
+            </form>
         </div>
     </body>
 </html>
