@@ -20,12 +20,12 @@ from django.urls import path
 from movie import views as movieViews
 from django.conf.urls.static import static
 from django.conf import settings
+from django.urls import path, include
 
 # Define the URL patterns for the application
 urlpatterns = [
     # Map the URL '/admin/' to the Django admin interface
     path('admin/', admin.site.urls),
-    
     # Map the URL '' (home page) to the home view function in the movieViews module
     path('', movieViews.home, name = 'home'),
     
@@ -33,6 +33,8 @@ urlpatterns = [
     path('about/', movieViews.about),
 
     path('signup/', movieViews.signup, name='signup'),
+
+    path('news/', include('news.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

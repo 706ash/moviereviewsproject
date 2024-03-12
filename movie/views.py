@@ -1,14 +1,17 @@
 # Import necessary modules
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Movie
 # Define the home view function
 def home(request):
-    # Get the search term from the query parameters
     searchTerm = request.GET.get('searchMovie')
+    if searchTerm:
+        movies = Movie.objects.filter(title__icontains=searchTerm)
+    else:
+        movies = Movie.objects.all()
+    return render(request, 'home.html',{'searchTerm':searchTerm, 'movies': movies})
+
     
-    # Render the home.html template with the search term as a context variable
-    return render(request, 'home.html', {'searchTerm' : searchTerm})
 
 def signup(request):
     email = request.GET.get('email')
